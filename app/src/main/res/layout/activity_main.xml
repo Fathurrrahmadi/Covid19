@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <LinearLayout
+        android:id="@+id/lay_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/box_search_country"
+            android:textCursorDrawable="@null"
+            app:actionViewClass="android.widget.SearchView"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null"
+            app:queryHint="Cari Negara" />
+
+        <Button
+            android:id="@+id/btn_sequence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="5"
+            android:background="@drawable/ic_baseline_import_export_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_globe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_search"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_purple"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/activityMain_linear">
+
+            <TextView
+                android:text="Confirmed"
+                style="@style/hahaMC_txt_name"/>
+
+            <TextView
+                android:id="@+id/txt_confirmed_globe"
+                style="@style/hahaMC_txt_name"
+                android:text="12.000.000" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/activityMain_linear">
+
+            <TextView
+                android:text="Recovered"
+                style="@style/hahaMC_txt_name"/>
+
+            <TextView
+                android:id="@+id/txt_recovered_globe"
+                style="@style/hahaMC_txt_name"
+                android:text="12.000.000" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/activityMain_linear">
+
+            <TextView
+                android:text="Deaths"
+                style="@style/hahaMC_txt_name"/>
+
+            <TextView
+                android:id="@+id/txt_death_globe"
+                style="@style/hahaMC_txt_name"
+                android:text="12.000.000" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_header"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/lay_globe"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Countries"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Cases"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Recovered"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Deaths"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_below="@id/lay_header"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_country"
+            tools:listitem="@layout/list_country"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</RelativeLayout>
